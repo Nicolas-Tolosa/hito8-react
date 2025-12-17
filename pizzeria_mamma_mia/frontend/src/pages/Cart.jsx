@@ -14,7 +14,7 @@ const Cart = () => {
     increaseQuantity,
     decreaseQuantity,
     calculateTotal,
-    clearCart // <-- Asumimos que tienes un método para limpiar el carrito
+    clearCart
   } = useCart();
 
   // Consumir User Context para token y headers
@@ -22,14 +22,12 @@ const Cart = () => {
 
   const total = calculateTotal();
 
-  // Requisito 8: Estado para mensaje de éxito
   const [checkoutMessage, setCheckoutMessage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Requisito 7: Implementar la función de checkout
   const handleCheckout = async () => {
     setLoading(true);
-    setCheckoutMessage(null); // Limpiar mensajes anteriores
+    setCheckoutMessage(null);
 
     try {
       const response = await fetch(`${API_URL}/checkouts`, {
@@ -49,9 +47,8 @@ const Cart = () => {
         throw new Error(data.message || 'Error al procesar la compra.');
       }
 
-      // Requisito 8: Mostrar mensaje de éxito
       setCheckoutMessage('¡Compra realizada con éxito! Recibirás un email de confirmación.');
-      clearCart(); // Limpiar el carrito después de la compra exitosa
+      clearCart();
 
     } catch (err) {
       setCheckoutMessage(`Error en la compra: ${err.message}. Asegúrate de que el token JWT es válido.`);
@@ -68,7 +65,7 @@ const Cart = () => {
       {cart.length === 0 ? (
         <p className="text-lg text-center font-semibold text-gray-500">El carrito está vacío. ¡Añade algunas pizzas!</p>
       ) : (
-        // ... Mapeo del carrito (Mantener código anterior)
+        // Mapeo del carrito
         <>
           {cart.map((item) => (
             <div className="grid grid-cols-12 my-3 gap-3 text-xs md:text-base lg:text-base xl:text-base 2xl:text-base" key={item.id}>

@@ -1,25 +1,23 @@
-// frontend/src/pages/Pizza.jsx (Componente de Detalle)
-
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { formatCurrency } from '../utils/formatCurrency'
 import { usePizzas } from '../context/PizzaContext' // Usar el Context de Pizzas
 
 const PizzaDetail = () => {
-    // 1. Obtener el ID de la URL
+    // Obtener el ID de la URL
     const { id } = useParams();
 
-    // 2. Consumir el Context de Pizzas para acceder a todas las pizzas cargadas
+    // Consumir el Context de Pizzas para acceder a todas las pizzas cargadas
     const { pizzas, loading, error } = usePizzas();
 
     // Estado local para la pizza seleccionada
     const [pizza, setPizza] = useState(null);
 
-    // 3. Lógica para buscar la pizza cuando cambien el ID o las pizzas cargadas
+    // Logica para buscar la pizza cuando cambien el ID o las pizzas cargadas
     useEffect(() => {
         // Buscamos la pizza solo si las pizzas ya cargaron y tenemos un ID
         if (pizzas.length > 0 && id) {
-            // Buscamos la pizza usando el ID (asegúrate de que el ID es un string)
+            // Buscamos la pizza usando el ID
             const foundPizza = pizzas.find(p => p.id === id);
             setPizza(foundPizza);
         }

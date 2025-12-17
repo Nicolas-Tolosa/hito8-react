@@ -2,7 +2,6 @@
 
 import { createContext, useState, useContext } from 'react';
 import React from 'react';
-// Importamos usePizzas, aunque ya no lo usaremos para inicializar el carrito
 import { usePizzas } from './PizzaContext';
 
 const CartContext = createContext();
@@ -41,7 +40,7 @@ export const CartProvider = ({ children }) => {
         );
     };
 
-    // FUNCIÓN DE DECREMENTO (elimina el ítem si la cantidad llega a 0)
+    // Función de decremento (elimina el ítem si la cantidad llega a 0)
     const decreaseQuantity = (id) => {
         setCart((prevCart) =>
             prevCart
@@ -50,12 +49,12 @@ export const CartProvider = ({ children }) => {
                         ? { ...item, quantity: item.quantity - 1 } // Decrementa
                         : item
                 )
-                // LÓGICA DE FILTRADO
+                // Logica de filtrado
                 .filter(item => item.quantity > 0)
         );
     };
 
-    // 🚨 NUEVA FUNCIÓN: Restablece el carrito a un array vacío
+    // Restablece el carrito a un array vacío
     const clearCart = () => {
         setCart([]);
     };
@@ -70,7 +69,6 @@ export const CartProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         calculateTotal,
-        // 🚨 EXPORTAR LA NUEVA FUNCIÓN
         clearCart,
     };
 

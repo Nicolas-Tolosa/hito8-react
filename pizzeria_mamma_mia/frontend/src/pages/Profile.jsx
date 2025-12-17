@@ -1,11 +1,8 @@
-// frontend/src/pages/Profile.jsx
-
 import React from 'react';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
-    // Requisito 5: Mostrar email y botón de logout
     const { userEmail, logout, loading } = useUser();
     const navigate = useNavigate();
 

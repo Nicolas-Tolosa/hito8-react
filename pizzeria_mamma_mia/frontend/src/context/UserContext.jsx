@@ -6,7 +6,7 @@ const UserContext = createContext();
 
 export const useUser = () => useContext(UserContext);
 
-// URL del backend (asumimos que corre en el puerto 5000)
+// URL del backend
 const API_URL = 'http://localhost:5000/api'; 
 
 export const UserProvider = ({ children }) => {
@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
             const data = await response.json();
 
             if (!response.ok) {
-                // Manejo de errores de la API (ej. 409 Conflict)
+                // Manejo de errores de la API
                 throw new Error(data.message || 'Error en el registro');
             }
 
@@ -102,7 +102,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
 
-    // 3. Implementa Obtener Perfil
+    // 3. Implementa obtener perfil
     const getProfile = useCallback(async () => {
         if (!token) {
             setError('No hay token para obtener el perfil.');
@@ -129,7 +129,6 @@ export const UserProvider = ({ children }) => {
                 throw new Error(data.message || 'Error al obtener perfil');
             }
             
-            // Asumimos que el backend devuelve un objeto de perfil (ej. { email: '...' })
             setUserEmail(data.email || userEmail); 
             return data;
         } catch (err) {

@@ -2,13 +2,10 @@
 
 import Header from '../pages/components/Header'
 import CardPizza from '../components/CardPizza'
-// import { useEffect, useState } from 'react' // ELIMINADO
-// import Pizza from './Pizza' // ELIMINADO
-import { usePizzas } from '../context/PizzaContext' // <-- NUEVA IMPORTACIÓN
+import { usePizzas } from '../context/PizzaContext'
 
 const Home = () => {
 
-  // ELIMINADA toda la lógica de fetch y useState
   const { pizzas, loading, error } = usePizzas(); // <-- CONSUMIMOS EL CONTEXT
 
   // Manejo de estados de carga y error

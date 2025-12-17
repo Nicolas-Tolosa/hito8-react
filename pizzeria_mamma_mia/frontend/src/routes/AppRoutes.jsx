@@ -1,5 +1,3 @@
-// frontend/src/routes/AppRoutes.jsx (Ejemplo de implementación de rutas)
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
@@ -34,7 +32,7 @@ const AppRoutes = () => {
           <Route path="/register" element={<RegisterPage />} />
         </Route>
 
-        {/* Ruta de error 404 (opcional) */}
+        {/* Ruta de error 404 */}
         <Route path="*" element={
           <div className="text-center mt-20">
             <h1 className="text-3xl font-bold">404</h1>
