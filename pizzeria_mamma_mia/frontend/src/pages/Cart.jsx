@@ -34,7 +34,7 @@ const Cart = () => {
     } catch (err) {
       setCheckoutMessage(`Error en la compra: ${err.message}.`);
       console.error("Checkout fallido:", err);
-    } finaly {
+    } finally {
       setLoading(false);
     }
   };
