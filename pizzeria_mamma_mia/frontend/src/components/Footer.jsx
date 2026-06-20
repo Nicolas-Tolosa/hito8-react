@@ -8,7 +8,11 @@ const Footer = () => {
         
         {/* Branding */}
         <div className="flex flex-col items-start space-y-4">
-          <img src="/logo.jpg" alt="Mamma Mía Logo" className="rounded-full h-16 w-16 object-cover border-2 border-orange-500 bg-slate-900" />
+        <img 
+          src="/logo.jpg" 
+          alt="Mamma Mía Logo" 
+          className="rounded-full h-16 w-16 object-cover border-2 border-orange-500 bg-slate-900 mx-auto md:mx-0" 
+        />
           <p className="text-xs text-slate-500">Las mejores pizzas artesanales con el sabor tradicional italiano directo a tu mesa.</p>
         </div>
 
@@ -26,8 +30,8 @@ const Footer = () => {
           <h3 className="font-bold text-white tracking-wider text-xs uppercase mb-2 text-orange-500">Ayuda</h3>
           <Link to="#" className="hover:text-white transition-colors">Preguntas frecuentes</Link>
           <Link to="#" className="hover:text-white transition-colors">Contacto</Link>
-          <a href="tel:6666666666" className="text-slate-300 font-semibold hover:text-orange-400 transition-colors mt-1">
-            Pide al: 666 666 6666
+          <a href="tel:1112223333" className="text-slate-300 font-semibold hover:text-orange-400 transition-colors mt-1">
+            Pide al: +569 1222 3333
           </a>
         </div>
         
