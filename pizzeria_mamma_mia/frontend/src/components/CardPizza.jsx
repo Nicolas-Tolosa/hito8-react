@@ -27,11 +27,11 @@ const CardPizza = ({ pizza }) => {
       {/* Contenedor de Imagen con Efecto Hover */}
       <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
         <Link to={`/pizza/${pizza.id}`}>
-          <img 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-            src={`${import.meta.env.VITE_API_URL}${pizza.img}`}
-            alt={pizza.name} 
-          />
+        <img 
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+          src={imageSrc} 
+          alt={pizza.name} 
+        />
         </Link>
         <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-orange-400 text-xs font-bold px-2.5 py-1 rounded-full border border-slate-800">
           🍕 Premium
