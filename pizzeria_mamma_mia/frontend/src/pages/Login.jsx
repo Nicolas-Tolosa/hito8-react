@@ -67,4 +67,19 @@ const LoginPage = () => {
                         }`}
                         disabled={loading}
                     >
-                        {loading ?
+                        {loading ? 'Verificando...' : 'Ingresar'}
+                    </button>
+                </form>
+
+                <p className="text-xs text-slate-500 text-center mt-6">
+                    ¿No tienes cuenta aún?{' '}
+                    <Link to="/register" className="text-orange-400 hover:underline font-medium">
+                        Regístrate aquí
+                    </Link>
+                </p>
+            </div>
+        </div>
+    );
+};
+
+export default LoginPage;
