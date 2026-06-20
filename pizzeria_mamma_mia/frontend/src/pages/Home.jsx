@@ -1,4 +1,4 @@
-import Header from '../components/Header'
+import Header from '../pages/components/Header'
 import CardPizza from '../components/CardPizza'
 import { usePizzas } from '../context/PizzaContext'
 
