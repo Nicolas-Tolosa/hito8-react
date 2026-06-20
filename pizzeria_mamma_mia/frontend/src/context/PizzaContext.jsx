@@ -14,7 +14,7 @@ export const PizzaProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/api/pizzas")
+        fetch(`${import.meta.env.VITE_API_URL}/api/pizzas`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error('La respuesta de la red no fue exitosa');
