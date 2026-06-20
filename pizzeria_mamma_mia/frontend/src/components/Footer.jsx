@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Branding */}
         <div className="flex flex-col items-start space-y-4">
         <img 
-          src="/logo.jpg" 
+          src="/logo.png" 
           alt="Mamma Mía Logo" 
           className="rounded-full h-16 w-16 object-cover border-2 border-orange-500 bg-slate-900 mx-auto md:mx-0" 
         />
