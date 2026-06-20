@@ -6,10 +6,21 @@ import { useCart } from '../context/CartContext';
 const CardPizza = ({ pizza }) => {
   const { addToCart } = useCart();
 
+  const localImages = {
+    "p001": "/napolitana.jpg",
+    "p002": "/espanola.jpeg", // o /española.jpeg si decides mantener la ñ
+    "p003": "/salame.jpeg",
+    "p004": "/cuatro_estaciones.jpg",
+    "p005": "/bacon.jpg",
+    "p006": "/pollo_picante.jpg"
+  };
+
+  // Si el ID coincide, usa la local; si no, intenta usar la de la pizza por si acaso
+  const imageSrc = localImages[pizza.id] || pizza.img;
+
   const handleAddToCart = () => {
     addToCart(pizza);
   };
-
   return (
     <div className="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-950/20 flex flex-col group">
       
