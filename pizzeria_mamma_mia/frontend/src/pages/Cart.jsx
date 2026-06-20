@@ -3,8 +3,7 @@ import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../utils/formatCurrency';
 import { useUser } from '../context/UserContext';
 
-const API_URL = 'http://localhost:5000/api';
-
+const API_URL = 'http://localhost:5000/api'; // Definir URL
 const Cart = () => {
   const { cart, increaseQuantity, decreaseQuantity, calculateTotal, clearCart } = useCart();
   const { isAuthenticated, getAuthHeader } = useUser();
