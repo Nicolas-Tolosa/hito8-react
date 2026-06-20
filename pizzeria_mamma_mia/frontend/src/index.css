@@ -2,66 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.pizza_image {
-  width: 20em;
-  height: 14em;
+/* Estilo global para que toda la app mantenga el fondo premium oscuro */
+body {
+  background-color: #020617; /* bg-slate-950 */
+  color: #f8fafc; /* text-slate-50 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  margin: 0;
+  padding: 0;
 }
-.navbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  list-style-type: none;
-  text-decoration: none;
-}
+
+/* Remover subrayados por defecto en links */
 a {
   text-decoration: none;
-}
-a:visited {
-  color: black;
-}
-
-.header {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  background-image: url("../public/Header.jpg");
-  background-size: cover;  
-  background-position: center; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
-
-.overlay {
-  background-color: rgba(4, 3, 3, 0.5);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.item-cart {
-  display: flex;
-  align-items: center;
-}
-.quantity-cart{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cart-container{
-  display: flex;
-  justify-content: space-around;
-}
-.item-cart > img {
-   width: 150px;
-   height: 150px;
 }
