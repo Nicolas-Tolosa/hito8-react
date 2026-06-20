@@ -18,7 +18,7 @@ const CardPizza = ({ pizza }) => {
         <Link to={`/pizza/${pizza.id}`}>
           <img 
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-            src={pizza.img} 
+            src={`${import.meta.env.VITE_API_URL}${pizza.img}`}
             alt={pizza.name} 
           />
         </Link>
