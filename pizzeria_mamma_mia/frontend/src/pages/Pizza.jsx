@@ -1,54 +1,59 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { formatCurrency } from '../utils/formatCurrency'
-import { usePizzas } from '../context/PizzaContext' // Usar el Context de Pizzas
+import { usePizzas } from '../context/PizzaContext'
 
 const PizzaDetail = () => {
-    // Obtener el ID de la URL
     const { id } = useParams();
-
-    // Consumir el Context de Pizzas para acceder a todas las pizzas cargadas
     const { pizzas, loading, error } = usePizzas();
-
-    // Estado local para la pizza seleccionada
     const [pizza, setPizza] = useState(null);
 
-    // Logica para buscar la pizza cuando cambien el ID o las pizzas cargadas
     useEffect(() => {
-        // Buscamos la pizza solo si las pizzas ya cargaron y tenemos un ID
         if (pizzas.length > 0 && id) {
-            // Buscamos la pizza usando el ID
             const foundPizza = pizzas.find(p => p.id === id);
             setPizza(foundPizza);
         }
-    }, [pizzas, id]); // Se re-ejecuta si el ID de la URL o la lista de pizzas cambia
+    }, [pizzas, id]);
 
-    if (loading) return <p className="text-center mt-10 text-xl">Cargando detalles de pizza...</p>;
-    if (error) return <p className="text-center mt-10 text-xl text-red-600">Error al cargar datos: {error}</p>;
-    if (!pizza) return <p className="text-center mt-10">Pizza no encontrada.</p>;
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-slate-950 flex justify-center items-center text-white">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+            </div>
+        );
+    }
+    
+    if (error) return <p className="text-center pt-20 text-xl text-rose-500 bg-slate-950 min-h-screen">Error al cargar datos: {error}</p>;
+    if (!pizza) return <p className="text-center pt-20 text-slate-400 bg-slate-950 min-h-screen">Pizza no encontrada.</p>;
 
     return (
-        <div className="flex justify-center my-10">
-            <div className="max-w-3xl bg-white border border-gray-100 rounded-lg shadow p-6 flex flex-col md:flex-row gap-6">
+        <div className="bg-slate-950 min-h-screen flex items-center justify-center py-12 px-4">
+            <div className="max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row gap-6 md:gap-8 p-6 md:p-8">
 
                 {/* Imagen */}
-                <div className="md:w-1/2">
-                    <img className="rounded-t-lg w-full h-auto object-cover" src={pizza.img} alt={pizza.name} />
+                <div className="w-full md:w-1/2 aspect-video md:aspect-square rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
+                    <img className="w-full h-full object-cover" src={pizza.img} alt={pizza.name} />
                 </div>
 
                 {/* Detalles */}
-                <div className="md:w-1/2 flex flex-col justify-between">
+                <div className="w-full md:w-1/2 flex flex-col justify-between space-y-6">
                     <div>
-                        <h1 className="text-4xl font-extrabold text-gray-900">{pizza.name}</h1>
-                        <p className="mt-2 text-xl font-semibold text-gray-800">${formatCurrency(pizza.price)}</p>
-                        <p className="mt-4 text-gray-700 italic">{pizza.desc}</p>
+                        <span className="text-xs font-bold text-orange-500 tracking-widest uppercase">Especialidad de la Casa</span>
+                        <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mt-1">{pizza.name}</h1>
+                        <p className="mt-3 text-2xl font-black text-orange-400">${formatCurrency(pizza.price)}</p>
+                        
+                        <p className="mt-4 text-sm text-slate-400 leading-relaxed font-light">{pizza.desc}</p>
 
-                        <h3 className="mt-6 text-lg font-bold">Ingredientes:</h3>
-                        <p className="text-gray-600">{pizza.ingredients?.join(', ')}</p>
+                        <div className="mt-6">
+                            <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Ingredientes Seleccionados:</h3>
+                            <p className="text-sm text-slate-300 bg-slate-950/60 border border-slate-800/80 px-4 py-3 rounded-xl leading-relaxed">
+                                {pizza.ingredients?.join(', ')}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="mt-8 flex justify-end">
-                        <Link to="/" className="text-white bg-slate-900 hover:bg-slate-700 font-bold rounded-full text-sm px-5 py-2.5 text-center transition-colors">
+                    <div className="flex justify-end pt-4 border-t border-slate-800/60">
+                        <Link to="/" className="w-full sm:w-auto text-center text-xs font-bold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-xl transition-all">
                             Volver al Catálogo
                         </Link>
                     </div>
