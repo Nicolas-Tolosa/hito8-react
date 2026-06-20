@@ -4,12 +4,10 @@ const Header = () => {
   return (
     <div 
       className="relative w-full h-[260px] md:h-[340px] bg-cover bg-center flex items-center justify-center border-b border-slate-900"
-      style={{ backgroundImage: "url('/Header.jpg')" }} // Busca la foto que tienes en la carpeta public
+      style={{ backgroundImage: "url('/Header.jpg')" }} 
     >
-      {/* Overlay oscuro para dar contraste premium */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/70 to-slate-950"></div>
 
-      {/* Contenido del Hero */}
       <div className="relative z-10 text-center px-4 max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white uppercase mb-2 drop-shadow-lg">
           ¡Pizzería <span className="text-orange-500">Mamma Mía!</span>
