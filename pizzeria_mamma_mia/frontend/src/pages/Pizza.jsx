@@ -8,6 +8,16 @@ const PizzaDetail = () => {
     const { pizzas, loading, error } = usePizzas();
     const [pizza, setPizza] = useState(null);
 
+    // Diccionario para enlazar cada ID de pizza con su ruta local en /public
+    const localImages = {
+        "p001": "/napolitana.jpg",
+        "p002": "/espanola.jpeg",
+        "p003": "/salame.jpeg",
+        "p004": "/cuatro_estaciones.jpg",
+        "p005": "/bacon.jpg",
+        "p006": "/pollo_picante.jpg"
+    };
+
     useEffect(() => {
         if (pizzas.length > 0 && id) {
             const foundPizza = pizzas.find(p => p.id === id);
@@ -26,13 +36,16 @@ const PizzaDetail = () => {
     if (error) return <p className="text-center pt-20 text-xl text-rose-500 bg-slate-950 min-h-screen">Error al cargar datos: {error}</p>;
     if (!pizza) return <p className="text-center pt-20 text-slate-400 bg-slate-950 min-h-screen">Pizza no encontrada.</p>;
 
+    // Obtenemos la imagen mapeada local o usamos la de la API si no existiera en el objeto
+    const imageSrc = localImages[pizza.id] || pizza.img;
+
     return (
         <div className="bg-slate-950 min-h-screen flex items-center justify-center py-12 px-4">
             <div className="max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row gap-6 md:gap-8 p-6 md:p-8">
 
                 {/* Imagen */}
                 <div className="w-full md:w-1/2 aspect-video md:aspect-square rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
-                    <img className="w-full h-full object-cover" src={pizza.img} alt={pizza.name} />
+                    <img className="w-full h-full object-cover" src={imageSrc} alt={pizza.name} />
                 </div>
 
                 {/* Detalles */}
