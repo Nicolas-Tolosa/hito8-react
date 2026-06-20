@@ -1,17 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Estilo global para que toda la app mantenga el fondo premium oscuro */
-body {
-  background-color: #020617; /* bg-slate-950 */
-  color: #f8fafc; /* text-slate-50 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  margin: 0;
-  padding: 0;
-}
-
-/* Remover subrayados por defecto en links */
-a {
-  text-decoration: none;
-}
+@import "tailwindcss";
